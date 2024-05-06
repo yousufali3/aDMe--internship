@@ -10,6 +10,7 @@ const Home = () => {
   const fetchAllImages = useCallback(async () => {
     try {
       const { data } = await axios.get(baseUrl);
+
       let itemImage1 = [];
       let itemImage2 = [];
       for (let i = 0; i < data?.length; i++) {
@@ -19,8 +20,10 @@ const Home = () => {
           itemImage2.push(data[i]);
         }
       }
+
       setFirstImagesData(itemImage1);
       setImagesData(itemImage2);
+      window.scrollTo({ top: 0, behavior: "smooth" });
     } catch (error) {
       console.log(error.message);
     }
